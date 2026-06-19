@@ -3,9 +3,11 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Separator } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
 
@@ -24,7 +26,27 @@ const SignUpPage = () => {
             confirmPassword: confirmPassword,
             callbackURL: "/"
         })
-        console.log('signup response', {res, error});
+        // console.log('signup response', {res, error});
+
+        if(error){
+            toast.error(error.message, {
+                position: 'top-center',
+            })
+        }
+
+        if(res){
+            toast.success("Sign Up Successful", {
+                position: 'top-center',
+            })
+            redirect('/login')
+        }
+        
+    }
+
+    const handleGoogleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
     }
 
     const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +64,7 @@ const SignUpPage = () => {
                             <label className="label">Name</label>
                             <input
                                 {...register("name", {
-                                    required: "Enter your valid name"
+                                    required: "Enter your name"
                                 })}
                                 type="name"
                                 className="input"
@@ -55,7 +77,7 @@ const SignUpPage = () => {
                             <label className="label">Email</label>
                             <input
                                 {...register("email", {
-                                    required: "Enter your valid email"
+                                    required: "Enter your email"
                                 })}
                                 type="email"
                                 className="input"
@@ -67,7 +89,7 @@ const SignUpPage = () => {
                             <label className="label">Photo Url</label>
                             <input
                                 {...register("photo", {
-                                    required: "Enter your valid photo url"
+                                    required: "Enter your photo url"
                                 })}
                                 type="text"
                                 className="input"
@@ -147,7 +169,7 @@ const SignUpPage = () => {
 
                     {/* google sign up */}
                     <Button
-
+                        onClick={handleGoogleSignIn}
                         className="w-full my-3" variant="outline">
                         <Icon icon="devicon:google" />
                         Sign up with Google
