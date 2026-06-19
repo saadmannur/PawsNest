@@ -7,8 +7,8 @@ import { Button } from '@heroui/react';
 
 const Navbar = () => {
     return (
-        <div className='bg-[#f5ede0]'>
-            <nav className='container mx-auto mt-5'>
+        <div className='bg-[#f5ede0] rounded-b-2xl'>
+            <nav className='container mx-auto mt-5 mb-2'>
                 <div className="navbar bg-[#005a55] text-white shadow-sm rounded-full px-5">
                     <div className="navbar-start">
                         <div className="dropdown">
