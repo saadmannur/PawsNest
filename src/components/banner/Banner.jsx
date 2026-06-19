@@ -21,26 +21,42 @@ const Banner = () => {
                 </div>
                 <div className='flex justify-center items-center gap-10'>
                     <div className=''>
-                        <Image
-                            src={scottish}
-                            alt='cat'
-                            width={300}
-                            height={200}
-                            className='rounded-full'
-                        ></Image>
+                        <div className="relative w-[250px] h-[250px] group overflow-hidden rounded-full">
+                            <Image
+                                src={scottish}
+                                alt="cat"
+                                fill
+                                className="object-cover"
+                            />
+
+                            {/* Green Overlay */}
+                            <div className="absolute inset-0 bg-[#005a55]/70 opacity-0 m-3 rounded-full group-hover:opacity-100 transition-all duration-500 flex items-end justify-center">
+                                <h3 className="text-white text-xl text-center mb-5 italic">
+                                    Dumbo <br /><span className='text-[#f69b03]  text-sm'>Munchkin Cat</span>
+                                </h3>
+                            </div>
+                        </div>
                         <Image
                             src={heart}
                             alt='heart'
                             width={50}
                             height={50}
                         ></Image>
-                        <Image
-                            src={dachshund}
-                            alt='dog'
-                            width={300}
-                            height={100}
-                            className='rounded-4xl'
-                        ></Image>
+                        <div className="relative w-[250px] h-[250px] group overflow-hidden rounded-4xl">
+                            <Image
+                                src={dachshund}
+                                alt="cat"
+                                fill
+                                className="object-cover"
+                            />
+
+                            {/* Green Overlay */}
+                            <div className="absolute inset-0 bg-[#005a55]/70 opacity-0 m-3 rounded-4xl group-hover:opacity-100 transition-all duration-500 flex items-end justify-center">
+                                <h3 className="text-white text-xl text-center mb-5 italic">
+                                    Snickers <br /><span className='text-[#f69b03]  text-sm'>Dachshund Dog</span>
+                                </h3>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <Image
@@ -49,13 +65,23 @@ const Banner = () => {
                             width={100}
                             height={100}
                         ></Image>
-                        <Image
-                            src={happy}
-                            alt='happy dog'
-                            width={300}
-                            height={200}
-                            className='rounded-full'
-                        ></Image>
+                        <div className="relative  group overflow-hidden">
+                            <Image
+                                src={happy}
+                                alt="cat"
+                                
+                                width={300}
+                                height={200}
+                                className="object-cover rounded-full"
+                            />
+
+                            {/* Green Overlay */}
+                            <div className="absolute inset-0 bg-[#005a55]/70 opacity-0 m-3 rounded-full group-hover:opacity-100 transition-all duration-300 flex items-end justify-center">
+                                <h3 className="text-white text-xl text-center mb-5 italic">
+                                    Muffin <br /><span className='text-[#f69b03]  text-sm'>Irish Wolfhound</span>
+                                </h3>
+                            </div>
+                        </div>
                         <Image
                             src={adapt}
                             alt='dog adapt'
