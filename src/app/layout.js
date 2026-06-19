@@ -1,7 +1,7 @@
 import dns from "node:dns";
 dns.setServers(["8.8.8.8", "8.8.4.4"])
 
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import {  Poppins } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={` h-full antialiased`}
     >
-      <body className={`min-h-full flex flex-col ${poppins.className}`}>
+      <body className={`min-h-full flex flex-col ${poppins.className} bg-[#f5ede0]`}>
 
         {children}
 

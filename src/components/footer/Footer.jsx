@@ -25,7 +25,7 @@ const Footer = () => {
                         <h2 className='text-2xl text-white font-semibold'>Stay Informed With Our Newsletter</h2>
                         <div className='relative'>
                             <Input className="w-full h-15" id="name" placeholder="Your Email Address" type="text" />
-                            <Button variant='outline' className={'bg-[#f69b03] text-white font-semibold  h-13 rounded-2xl absolute right-1 top-1'}>Subscribe</Button>
+                            <Button variant='outline' className={'bg-[#f69b03] text-white absolute right-1 top-3'}>Subscribe</Button>
                         </div>
                     </div>
                 </div>

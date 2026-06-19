@@ -8,7 +8,7 @@ import { Button } from '@heroui/react';
 const Navbar = () => {
     return (
         <div className='bg-[#f5ede0] rounded-b-2xl'>
-            <nav className='container mx-auto mt-5 mb-2'>
+            <nav className='container mx-auto mt-3 '>
                 <div className="navbar bg-[#005a55] text-white shadow-sm rounded-full px-5">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -42,7 +42,7 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <Link href={'/login'}>
-                            <Button variant='outline' className=" text-[#f69b03] font-bold ">Log in</Button>
+                            <Button variant='outline' className=" text-[#f69b03] font-semibold ">Log in</Button>
                         </Link>
                     </div>
                 </div>
