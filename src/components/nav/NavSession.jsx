@@ -43,7 +43,7 @@ const NavSession = () => {
                         <NavDropdown handleSignOut={handleSignOut}></NavDropdown>
                     </div> :
 
-                    <div>
+                    <div className='space-x-2'>
                         <Link href={'/login'}>
                             <Button variant='outline' className=" text-[#f69b03] font-semibold ">Log In</Button>
                         </Link>

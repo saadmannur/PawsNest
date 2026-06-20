@@ -8,8 +8,8 @@ import { TbLayoutDashboardFilled } from 'react-icons/tb';
 const NavDropdown = ({ handleSignOut }) => {
     return (
         <Dropdown>
-            <Button isIconOnly aria-label="Menu" variant="secondary">
-                <EllipsisVertical className="outline-none" />
+            <Button isIconOnly aria-label="Menu" variant="" className={'text-white hover:bg-[#f69b03]'}>
+                <EllipsisVertical className="outline-none border-none" />
             </Button>
             <Dropdown.Popover className={'bg-[#005a55]'}>
                 <Dropdown.Menu>

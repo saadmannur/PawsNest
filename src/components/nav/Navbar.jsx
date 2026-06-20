@@ -3,7 +3,6 @@ import React from 'react';
 import logo from '@/assets/logo.png'
 import NavLinks from './NavLinks';
 import Link from 'next/link';
-import { Button } from '@heroui/react';
 import NavSession from './NavSession';
 
 const Navbar = () => {
@@ -21,8 +20,6 @@ const Navbar = () => {
                                 className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-[#005a55] text-white">
                                 <li><NavLinks href={'/'}>Home</NavLinks></li>
                                 <li><NavLinks href={'/all-pets'}>All Pets</NavLinks></li>
-                                <li><NavLinks href={'/my-requests'}>My Requests</NavLinks></li>
-                                <li><NavLinks href={'/add-pet'}>Add Pet</NavLinks></li>
                             </ul>
                         </div>
                         <Link href={'/'}>
@@ -38,12 +35,9 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal px-1">
                             <li><NavLinks href={'/'}>Home</NavLinks></li>
                             <li><NavLinks href={'/all-pets'}>All Pets</NavLinks></li>
-                            <li><NavLinks href={'/my-requests'}>My Requests</NavLinks></li>
-                            <li><NavLinks href={'/add-pet'}>Add Pet</NavLinks></li>
-
                         </ul>
                     </div>
-                    <div className="navbar-end space-x-2">
+                    <div className="navbar-end">
                         <NavSession></NavSession>
                     </div>
                 </div>

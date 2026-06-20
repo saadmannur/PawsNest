@@ -1,9 +1,11 @@
+import MyRequests from '@/components/dashboard/MyRequests';
 import React from 'react';
 
 const DashboardPage = () => {
+    
     return (
         <div>
-            this is dashboard page
+            <MyRequests></MyRequests>
         </div>
     );
 };
