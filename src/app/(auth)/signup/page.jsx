@@ -53,10 +53,10 @@ const SignUpPage = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     return (
-        <div className='flex justify-center mt-1'>
+        <div className='flex justify-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
-                    <h2 className='text-center text-3xl  font-semibold '>Register an Account</h2>
+                    <h2 className='text-center text-3xl  font-semibold '>Create An Account</h2>
                     <form onSubmit={handleSubmit(handleLoginFunc)}>
                         <fieldset className="fieldset ">
 
@@ -157,7 +157,6 @@ const SignUpPage = () => {
                             <p className='text-red-500'>{errors.confirmPassword?.message}</p>
 
 
-                            <div><a className="link link-hover">Forgot password?</a></div>
                             <Button type='submit' variant='outline' className=' bg-[#f69b03] text-white w-full mt-3'>Sign up</Button>
                         </fieldset>
                     </form>

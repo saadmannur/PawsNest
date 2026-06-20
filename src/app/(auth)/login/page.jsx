@@ -24,7 +24,7 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         })
-        // console.log('login response', {res, error})
+        console.log('login response', {res, error})
 
         if (error) {
             toast.error(error.message, {
@@ -38,7 +38,6 @@ const LoginPage = () => {
             })
             redirect('/')
         }
-        
     }
 
     const handleGoogleSignIn = async () => {
@@ -50,7 +49,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (
-        <div className='flex justify-center mt-1'>
+        <div className='flex justify-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h2 className='text-center text-3xl font-semibold'>Login Your Account</h2>
@@ -100,7 +99,6 @@ const LoginPage = () => {
                             </div>
                             <p className='text-red-500'>{errors.password?.message}</p>
 
-                            <div><a className="link link-hover">Forgot password?</a></div>
                             <Button type='submit' variant='outline' className=' bg-[#f69b03] text-white w-full mt-3'>Login</Button>
                         </fieldset>
                     </form>

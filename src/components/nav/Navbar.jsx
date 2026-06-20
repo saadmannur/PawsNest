@@ -4,11 +4,12 @@ import logo from '@/assets/logo.png'
 import NavLinks from './NavLinks';
 import Link from 'next/link';
 import { Button } from '@heroui/react';
+import NavSession from './NavSession';
 
 const Navbar = () => {
     return (
         <div className='bg-[#f5ede0] rounded-b-2xl'>
-            <nav className='container mx-auto mt-3 '>
+            <nav className='container mx-auto mt-3 mb-2'>
                 <div className="navbar bg-[#005a55] text-white shadow-sm rounded-full px-5">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -24,12 +25,14 @@ const Navbar = () => {
                                 <li><NavLinks href={'/add-pet'}>Add Pet</NavLinks></li>
                             </ul>
                         </div>
-                        <Image
-                            src={logo}
-                            alt='logo'
-                            width={200}
-                            height={200}
-                        ></Image>
+                        <Link href={'/'}>
+                            <Image
+                                src={logo}
+                                alt='logo'
+                                width={200}
+                                height={200}
+                            ></Image>
+                        </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
@@ -40,10 +43,8 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    <div className="navbar-end">
-                        <Link href={'/login'}>
-                            <Button variant='outline' className=" text-[#f69b03] font-semibold ">Log in</Button>
-                        </Link>
+                    <div className="navbar-end space-x-2">
+                        <NavSession></NavSession>
                     </div>
                 </div>
             </nav>
