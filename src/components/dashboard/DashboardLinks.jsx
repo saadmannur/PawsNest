@@ -7,7 +7,7 @@ import React from 'react';
 const DashboardLinks = ({ children, href }) => {
 
     const pathname = usePathname()
-    console.log(pathname)
+    // console.log(pathname)
 
     const isActive = pathname === href;
 

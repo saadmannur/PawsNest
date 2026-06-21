@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }) => {
         <>
 
             <Navbar></Navbar>
-            <div className='container mx-auto lg:flex gap-10'>
+            <div className='container mx-auto lg:flex gap-2'>
                 <LeftSideBar></LeftSideBar>
                 {children}
             </div>

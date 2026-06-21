@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import React from 'react';
 import { FaPlus, FaRegHeart } from 'react-icons/fa';
 import { LuClipboardList } from 'react-icons/lu';
@@ -28,7 +28,7 @@ const LeftSideBar = () => {
                 <div>
                     <DashboardLinks href={'/my-listing'}>
                             <FaRegHeart />
-                            My Listing
+                            My Listings
                     </DashboardLinks>
                 </div>
             </div>

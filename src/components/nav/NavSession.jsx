@@ -26,6 +26,10 @@ const NavSession = () => {
         });
     }
 
+    if (isPending) {
+        return <span className="loading loading-spinner loading-md"></span>
+    }
+
     return (
         <>
             {
@@ -39,7 +43,7 @@ const NavSession = () => {
                             />
                             <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
                         </Avatar>
-                        <h2 className='text-[#f69b03] text-lg font-semibold'>{user?.name}</h2>
+                        <h2 className='text-[#f69b03] font-semibold'>{user?.name}</h2>
                         <NavDropdown handleSignOut={handleSignOut}></NavDropdown>
                     </div> :
 
