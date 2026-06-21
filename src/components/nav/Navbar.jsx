@@ -4,11 +4,12 @@ import logo from '@/assets/logo.png'
 import NavLinks from './NavLinks';
 import Link from 'next/link';
 import NavSession from './NavSession';
+import NavColor from './NavColor';
 
 const Navbar = () => {
     return (
-        <div className='bg-[#f5ede0] rounded-b-2xl'>
-            <nav className='container mx-auto mt-3 mb-2'>
+        <NavColor>
+            <nav className='container mx-auto pt-3 pb-2'>
                 <div className="navbar bg-[#005a55] text-white shadow-sm rounded-full px-5">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -42,7 +43,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-        </div>
+        </NavColor>
     );
 };
 

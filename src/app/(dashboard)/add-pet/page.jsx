@@ -103,7 +103,7 @@ const AddPet = () => {
                         <div className="col-span-1 lg:col-span-2">
                             <TextField name="age" isRequired>
                                 <Label>Age(years)</Label>
-                                <Input placeholder="e.g. 2 years" className="rounded-full" />
+                                <Input placeholder="e.g. 2 " className="rounded-full" />
                                 <FieldError />
                             </TextField>
                         </div>
@@ -123,11 +123,11 @@ const AddPet = () => {
                                 </Select.Trigger>
                                 <Select.Popover>
                                     <ListBox>
-                                        <ListBox.Item id="male" textValue="Male">
+                                        <ListBox.Item id="Male" textValue="Male">
                                             Male
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
-                                        <ListBox.Item id="female" textValue="Female">
+                                        <ListBox.Item id="Female" textValue="Female">
                                             Female
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
@@ -153,15 +153,15 @@ const AddPet = () => {
                                 </Select.Trigger>
                                 <Select.Popover>
                                     <ListBox>
-                                        <ListBox.Item id="healthy" textValue="Healthy">
+                                        <ListBox.Item id="Healthy" textValue="Healthy">
                                             Healthy
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
-                                        <ListBox.Item id="stable" textValue="Stable">
+                                        <ListBox.Item id="Stable" textValue="Stable">
                                             Stable
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
-                                        <ListBox.Item id="critical" textValue="Critical">
+                                        <ListBox.Item id="Critical" textValue="Critical">
                                             Critical
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
@@ -186,11 +186,11 @@ const AddPet = () => {
                                 </Select.Trigger>
                                 <Select.Popover>
                                     <ListBox>
-                                        <ListBox.Item id="yes" textValue="Yes">
+                                        <ListBox.Item id="Yes" textValue="Yes">
                                             Yes
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
-                                        <ListBox.Item id="no" textValue="No">
+                                        <ListBox.Item id="No" textValue="No">
                                             No
                                             <ListBox.ItemIndicator />
                                         </ListBox.Item>
@@ -224,7 +224,7 @@ const AddPet = () => {
                                 <Label>Adaption Fee (USD)</Label>
                                 <Input
                                     type="number"
-                                    placeholder="1299"
+                                    placeholder="$..35"
                                     className="rounded-full lg:w-full"
                                 />
                                 <FieldError />

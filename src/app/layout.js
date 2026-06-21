@@ -1,15 +1,21 @@
 import dns from "node:dns";
 dns.setServers(["8.8.8.8", "8.8.4.4"])
 
-import {  Poppins } from "next/font/google";
+import {  Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const PlayFairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 })
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
 
 
 export const metadata = {
@@ -21,9 +27,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={` h-full antialiased`}
+      className={` h-full antialiased ${PlayFairDisplay.variable} ${inter.variable}`}
     >
-      <body className={`min-h-full flex flex-col ${poppins.className} bg-base-300`}>
+      <body className={`min-h-full flex flex-col bg-[#FFFFFF]`}>
 
         {children}
         <ToastContainer />
