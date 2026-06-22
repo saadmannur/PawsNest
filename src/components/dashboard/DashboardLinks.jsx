@@ -13,7 +13,7 @@ const DashboardLinks = ({ children, href }) => {
 
     return (
         <Link href={href}
-            className={`flex justify-baseline items-center gap-2 font-semibold rounded-full px-6 py-2 hover:bg-[#f69b03] ${isActive ? 'font-bold bg-[#f69b03]' : ''}`}
+            className={`flex justify-baseline items-center gap-2 font-semibold rounded-full px-6 py-1 hover:bg-[#f69b03] ${isActive ? 'font-bold bg-[#f69b03]' : ''}`}
         >
             {children}
         </Link>

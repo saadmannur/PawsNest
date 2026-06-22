@@ -27,6 +27,7 @@ const Banner = () => {
                                 alt="cat"
                                 fill
                                 className="object-cover"
+                                sizes=''
                             />
 
                             {/* Green Overlay */}
@@ -41,6 +42,8 @@ const Banner = () => {
                             alt='heart'
                             width={50}
                             height={50}
+                            sizes=''
+                            className='w-12 h-auto'
                         ></Image>
                         <div className="relative w-[250px] h-[250px] group overflow-hidden rounded-4xl">
                             <Image
@@ -48,6 +51,7 @@ const Banner = () => {
                                 alt="cat"
                                 fill
                                 className="object-cover"
+                                sizes=''
                             />
 
                             {/* Green Overlay */}
@@ -64,6 +68,7 @@ const Banner = () => {
                             alt='highlight'
                             width={100}
                             height={100}
+                            className='w-24 h-auto'
                         ></Image>
                         <div className="relative  group overflow-hidden">
                             <Image
@@ -72,7 +77,7 @@ const Banner = () => {
                                 
                                 width={300}
                                 height={200}
-                                className="object-cover rounded-full"
+                                className="object-cover rounded-full w-72 h-auto"
                             />
 
                             {/* Green Overlay */}
@@ -87,6 +92,7 @@ const Banner = () => {
                             alt='dog adapt'
                             width={200}
                             height={100}
+                            className='w-48 h-auto'
                         ></Image>
                     </div>
                 </div>

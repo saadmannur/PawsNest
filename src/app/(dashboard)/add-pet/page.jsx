@@ -2,8 +2,10 @@
 
 import { authClient } from '@/lib/auth-client';
 import { Card, FieldError, Input, Label, TextField, Select, ListBox, TextArea, Button } from '@heroui/react';
+import { redirect } from 'next/navigation';
 import React from 'react';
 import { MdOutlinePets } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const AddPet = () => {
 
@@ -24,7 +26,13 @@ const AddPet = () => {
             body: JSON.stringify(pet)
         })
         const data = await res.json()
-        console.log(data)
+        
+        if (data.acknowledged === true){
+            toast.success("Pet Added Successfully")
+            redirect('/my-listing')
+        }else{
+            toast.error("Something Wrong")
+        }
 
     }
 
