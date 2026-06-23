@@ -51,7 +51,7 @@ const PetCardListings = async ({ petInfo }) => {
                         <EditWithModal petInfo={petInfo}></EditWithModal>
                     </div>
                     <div className='col-span-1'>
-                        <RequestModal adaptionPetRequests={adaptionPetRequests}></RequestModal>
+                        <RequestModal adaptionPetRequests={adaptionPetRequests} petName={petName}></RequestModal>
                     </div>
                     <div className='col-span-1'>
                         <DeleteAlert petInfo={petInfo}></DeleteAlert>

@@ -1,6 +1,20 @@
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import React from 'react';
 
-const MyRequests = () => {
+const MyRequests = async () => {
+
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    const user = session?.user;
+    // console.log(user)
+    const res = await fetch(`http://localhost:5000/adapted-pet/email/${user?.email}`);
+    const data = await res.json();
+    console.log(data) 
+
+    
+
     return (
         <div className='container mx-auto'>
             <div className=' text-center p-5 mb-2 border border-gray-300 bg-white rounded-xl mr-1 m-1 lg:m-0'>
