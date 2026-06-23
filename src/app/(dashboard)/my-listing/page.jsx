@@ -1,11 +1,10 @@
-import PetCard from '@/components/allPets/PetCard';
+
 import PetCardListings from '@/components/MyListings/PetCardListings';
 import { auth } from '@/lib/auth';
 import { Button } from '@heroui/react';
 import { headers } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
-import { MdOutlinePets } from 'react-icons/md';
 
 const MyListingPage = async () => {
 
@@ -16,7 +15,7 @@ const MyListingPage = async () => {
 
     const res = await fetch(`http://localhost:5000/pet/email/${user?.email}`);
     const data = await res.json()
-    console.log(data)
+    // console.log(data)
 
 
     return (

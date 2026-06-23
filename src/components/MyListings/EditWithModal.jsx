@@ -1,15 +1,46 @@
+'use client'
 import { Button, FieldError, Input, Label, Modal, Surface, TextField, Select, ListBox, TextArea } from '@heroui/react';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const EditWithModal = ({ petInfo }) => {
 
-    const { petName, vaccinationStatus, species, petImageUrl, ownerEmail, location, healthStatus, gender, description, age, adaptionFee, breed, } = petInfo;
+    const { petName, vaccinationStatus, species, petImageUrl, ownerEmail, location, healthStatus, gender, description, age, adaptionFee, breed, _id } = petInfo;
+
+    const router = useRouter();
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleSubmitForm = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget);
+        const updatedPet = Object.fromEntries(formData.entries())
+
+        const res = await fetch(`http://localhost:5000/pet/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(updatedPet)
+        });
+        const data = await res.json()
+
+        // console.log(data)
+
+        if (data.modifiedCount > 0) {
+            toast.success("Pet updated successfully");
+            setIsOpen(false)
+            router.refresh()
+        }
+
+    }
 
     return (
         <div>
-            <Modal >
-                <Button variant='outline' className={'w-full'}><FaRegEdit />Edit</Button>
+            <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
+                <Button onPress={() => setIsOpen(true)} variant='outline' className={'w-full'}><FaRegEdit />Edit</Button>
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
                         <Modal.Dialog className="sm:max-w-xl w-full max-h-[90vh]">
@@ -23,7 +54,7 @@ const EditWithModal = ({ petInfo }) => {
                             <Modal.Body className="p-6 w-full overflow-y-auto">
                                 <Surface variant="default">
                                     <form
-                                        // onSubmit={handleSubmitForm}
+                                        onSubmit={handleSubmitForm}
                                         className="lg:px-10 space-y-4 "
                                     >
                                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
