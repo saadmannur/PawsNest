@@ -2,10 +2,10 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaRegEdit } from 'react-icons/fa';
 import { HiUsers } from 'react-icons/hi';
-import { MdDeleteForever, MdOutlineRemoveRedEye } from 'react-icons/md';
+import {  MdOutlineRemoveRedEye } from 'react-icons/md';
 import EditWithModal from './EditWithModal';
+import DeleteAlert from './DeleteAlart';
 
 
 
@@ -46,7 +46,7 @@ const PetCardListings = ({ petInfo }) => {
                         <Button variant='outline' className={'w-full'}><HiUsers />Request</Button>
                     </div>
                     <div className='col-span-1'>
-                        <Button variant='outline' className={'w-full text-red-500'}><MdDeleteForever />Delete</Button>
+                        <DeleteAlert petInfo={petInfo}></DeleteAlert>
                     </div>
                 </div>
                 
