@@ -8,9 +8,9 @@ const DashboardLayout = ({ children }) => {
         <>
 
             <Navbar></Navbar>
-            <div className='container mx-auto lg:flex gap-2'>
-                <LeftSideBar></LeftSideBar>
-                {children}
+            <div className='container mx-auto lg:grid grid-cols-14 gap-4'>
+                <div className='col-span-3'><LeftSideBar></LeftSideBar></div>
+                <div className='col-span-11'>{children}</div>
             </div>
 
 

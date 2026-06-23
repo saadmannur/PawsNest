@@ -37,15 +37,15 @@ const AddPet = () => {
     }
 
     return (
-        <div className=' max-w-7xl mb-10'>
-            <div className='lg:w-4xl text-center p-5 mb-2 border border-gray-300 bg-white rounded-xl'>
+        <div className=' container mx-auto'>
+            <div className=' text-center p-5 mb-2 mt-2 lg:mt-0 border border-gray-300 bg-white rounded-xl mr-1 '>
                 <div className='text-3xl font-bold flex justify-center items-center gap-2'>
                     <MdOutlinePets />
                     <h2>Add a Pet Listing</h2>
                 </div>
                 <p className='text-gray-500 mt-1'>List a pet for adoption and help them find a loving home</p>
             </div>
-            <Card>
+            <Card className='mr-1 '>
                 <div className='text-xl font-semibold flex justify-baseline items-center gap-2'>
                     <MdOutlinePets />
                     <h2>Pet Information</h2>
@@ -264,7 +264,7 @@ const AddPet = () => {
 
                     {/* Buttons */}
 
-                    <div className='lg:flex justify-between items-center gap-5'>
+                    <div className='lg:flex justify-between items-center gap-5 space-x-3'>
                         <Button
                             type="cancel"
                             variant="outline"

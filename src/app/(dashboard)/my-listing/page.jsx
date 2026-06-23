@@ -1,6 +1,11 @@
+import PetCard from '@/components/allPets/PetCard';
+import PetCardListings from '@/components/MyListings/PetCardListings';
 import { auth } from '@/lib/auth';
+import { Button } from '@heroui/react';
 import { headers } from 'next/headers';
+import Link from 'next/link';
 import React from 'react';
+import { MdOutlinePets } from 'react-icons/md';
 
 const MyListingPage = async () => {
 
@@ -15,8 +20,43 @@ const MyListingPage = async () => {
 
 
     return (
-        <div>
-            this is my listing page
+        <div className='container mx-auto '>
+            <div className=' text-center p-5 mb-2 border border-gray-300 bg-white rounded-xl mr-1 m-1 lg:m-0'>
+                <div className='text-3xl font-bold flex justify-center items-center gap-2'>
+                    <h2>My Listing</h2>
+                </div>
+                <p className='text-gray-500 mt-1'>Manage your pet listing and adaption request</p>
+                <Link href={'/add-pet'}>
+                    <Button variant='outline' className={'bg-[#f69b03] mt-2 text-white'}>Adapt Now</Button>
+                </Link>
+            </div>
+            <div className=' grid grid-cols-3 gap-3 mr-1 m-1 lg:m-0 lg:pt-5'>
+                <div className='bg-[#f5ede0] text-center border border-gray-300  rounded-2xl p-4'>
+                    <p>{data.length}</p>
+                    <h2>Total Listings</h2>
+                </div>
+
+                <div className='bg-[#f5ede0] text-center border border-gray-300 rounded-2xl p-4'>
+                    <p>{data.length}</p>
+                    <h2>Available</h2>
+                </div>
+
+                <div className='bg-[#f5ede0] text-center  border border-gray-300 rounded-2xl p-4'>
+                    <p>{data.length}</p>
+                    <h2>Adapted</h2>
+                </div>
+            </div>
+
+            <div className=' mt-5  mr-1'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 m-1 lg:m-0'>
+                    {
+                        data.map(pet => <PetCardListings
+                            key={pet._id}
+                            petInfo={pet}
+                        ></PetCardListings>)
+                    }
+                </div>
+            </div>            
         </div>
     );
 };
