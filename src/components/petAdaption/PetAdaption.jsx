@@ -10,7 +10,7 @@ import { LuClipboardList } from 'react-icons/lu';
 import { SiTicktick } from 'react-icons/si';
 
 const PetAdaption = ({ petInfo }) => {
-    const { petName } = petInfo;
+    const { petName, _id } = petInfo;
 
     const { data } = authClient.useSession();
     const user = data?.user;
@@ -24,10 +24,11 @@ const PetAdaption = ({ petInfo }) => {
         // console.log(adaptedPet)
         const adaptedPetInfo = {
             ...adaptedPet,
+            petId: _id,
             status: "pending",
             requestDate: new Date().toLocaleDateString("en-GB")
         }
-        console.log(adaptedPetInfo);
+        // console.log(adaptedPetInfo);
 
         const res = await fetch(`http://localhost:5000/adapted-pet`, {
             method: 'POST',
@@ -37,7 +38,7 @@ const PetAdaption = ({ petInfo }) => {
             body: JSON.stringify(adaptedPetInfo)
         });
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
 
         if (data.acknowledged) {
             setIsSubmitted(true);

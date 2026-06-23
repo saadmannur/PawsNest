@@ -17,7 +17,7 @@ const DeleteAlert = ({ petInfo }) => {
             }
         });
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
 
         if (data.deletedCount > 0) {
             toast.warning("Pet deleted successfully");

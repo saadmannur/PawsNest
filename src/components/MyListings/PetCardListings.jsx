@@ -2,16 +2,24 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { HiUsers } from 'react-icons/hi';
 import {  MdOutlineRemoveRedEye } from 'react-icons/md';
 import EditWithModal from './EditWithModal';
 import DeleteAlert from './DeleteAlart';
+import RequestModal from './RequestModal';
 
 
 
-const PetCardListings = ({ petInfo }) => {
+const PetCardListings = async ({ petInfo }) => {
 
-    const { petName, petImageUrl, breed, adaptionFee, age, gender, location, species, _id } = petInfo;
+    const { petName, petImageUrl, adaptionFee,  species, _id } = petInfo;
+
+    const getAdaptionPetRequests = async () =>{
+        const res = await fetch(`http://localhost:5000/adapted-pet/${_id}`);
+        const data = await res.json()
+        return data;
+    }
+    const adaptionPetRequests = await getAdaptionPetRequests();
+    // console.log(adaptionPetRequests)
 
     return (
         <div className=' shadow rounded-2xl flex flex-col'>
@@ -30,7 +38,7 @@ const PetCardListings = ({ petInfo }) => {
 
                 <div className='flex justify-between items-center text-sm text-gray-500'>
                     <h3>{species}</h3>
-                    <p><span>0</span> Request</p>
+                    <p><span>{adaptionPetRequests?.length}</span> Request</p>
                 </div>
                 
                 <div className='grid grid-cols-2 gap-2 lg:gap-3 py-2'>
@@ -43,7 +51,7 @@ const PetCardListings = ({ petInfo }) => {
                         <EditWithModal petInfo={petInfo}></EditWithModal>
                     </div>
                     <div className='col-span-1'>
-                        <Button variant='outline' className={'w-full'}><HiUsers />Request</Button>
+                        <RequestModal adaptionPetRequests={adaptionPetRequests}></RequestModal>
                     </div>
                     <div className='col-span-1'>
                         <DeleteAlert petInfo={petInfo}></DeleteAlert>

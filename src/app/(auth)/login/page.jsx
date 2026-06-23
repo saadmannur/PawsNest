@@ -24,7 +24,7 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         })
-        console.log('login response', {res, error})
+        // console.log('login response', {res, error})
 
         if (error) {
             toast.error(error.message, {
