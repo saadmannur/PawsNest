@@ -96,6 +96,10 @@ const EditWithModal = ({ petInfo }) => {
                                                                 Bird
                                                                 <ListBox.ItemIndicator />
                                                             </ListBox.Item>
+                                                            <ListBox.Item id="rabbit" textValue="Rabbit">
+                                                                Rabbit
+                                                                <ListBox.ItemIndicator />
+                                                            </ListBox.Item>
                                                         </ListBox>
                                                     </Select.Popover>
                                                 </Select>
