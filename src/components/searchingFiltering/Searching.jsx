@@ -17,7 +17,7 @@ const Searching = () => {
     const handleSearch = (e) => {
         e.preventDefault();
 
-        router.push(`/all-pets?search=${search.trim()}&species=${species}`);
+        router.push(`/all-pets?search=${search.trim().toLowerCase()}&species=${species.trim().toLowerCase()}`);
     };
 
     // handle dropdown
@@ -26,7 +26,7 @@ const Searching = () => {
 
         setSpecies(selectedSpecies);
 
-        router.push(`/all-pets?search=${search.trim()}&species=${selectedSpecies.trim()}`);
+        router.push(`/all-pets?search=${search.trim().toLowerCase()}&species=${selectedSpecies.trim().toLowerCase()}`);
     };
 
     return (
@@ -53,7 +53,7 @@ const Searching = () => {
             </div>
 
             {/* filtering by dropdown */}
-            <div className='flex justify-end items-end my-0'>
+            <div className='flex justify-end items-end mt-5 lg:mt-0 '>
                 <div className='mr-5 flex items-center gap-2'>
                     <h2 className='text-lg font-semibold '>Sort By:</h2>
                     <Dropdown>
