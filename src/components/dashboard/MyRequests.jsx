@@ -13,6 +13,10 @@ const MyRequests = async () => {
     const data = await res.json();
     console.log(data) 
 
+    const pendingCount = data.filter(item => item.status === 'pending').length;
+    const approvedCount = data.filter(item => item.status === 'approved').length;
+    const rejectedCount = data.filter(item => item.status === 'rejected').length;
+
     
 
     return (
@@ -25,22 +29,22 @@ const MyRequests = async () => {
             </div>
             <div className=' grid grid-cols-4 gap-3 mr-1 m-1 lg:m-0 lg:pt-5'>
                 <div className='bg-[#f5ede0] text-center border border-gray-300  rounded-2xl p-4'>
-                    <p>0</p>
-                    <h2>Total</h2>
+                    <p className='text-black text-lg font-bold'>{data.length}</p>
+                    <h2 className='text-black text-lg font-bold'>Total</h2>
                 </div>
 
                 <div className='bg-[#f5ede0] text-center border border-gray-300 rounded-2xl p-4'>
-                    <p>0</p>
-                    <h2>Pending</h2>
+                    <p className='text-[#f69b30] text-lg font-bold'>{pendingCount}</p>
+                    <h2 className='text-[#f69b03] text-lg font-bold'>Pending</h2>
                 </div>
 
                 <div className='bg-[#f5ede0] text-center  border border-gray-300 rounded-2xl p-4'>
-                    <p>0</p>
-                    <h2>Approve</h2>
+                    <p className='text-green-700 text-lg font-bold'>{approvedCount}</p>
+                    <h2 className='text-green-700 text-lg font-bold'>Approve</h2>
                 </div>
                 <div className='bg-[#f5ede0] text-center  border border-gray-300 rounded-2xl p-4'>
-                    <p>0</p>
-                    <h2>Rejected</h2>
+                    <p className='text-red-700 text-lg font-bold'>{rejectedCount}</p>
+                    <h2 className='text-red-700 text-lg font-bold'>Rejected</h2>
                 </div>
             </div>
         </div>
