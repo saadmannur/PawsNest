@@ -1,3 +1,4 @@
+import AlreadyAdapted from '@/components/petAdaption/AlreadyAdapted';
 import PetAdaption from '@/components/petAdaption/PetAdaption';
 import { auth } from '@/lib/auth';
 import { Card } from '@heroui/react';
@@ -22,7 +23,7 @@ const PetDetailsPage = async ({ params }) => {
 
     const res = await fetch(`http://localhost:5000/pet/${petId}`);
     const data = await res.json()
-    const { petName, vaccinationStatus, species, petImageUrl, ownerEmail, location, healthStatus, gender, description, age, adaptionFee, breed, } = data;
+    const { petName, vaccinationStatus, species, petImageUrl, ownerEmail, location, healthStatus, gender, description, age, adaptionFee, breed, petStatus } = data;
 
     return (
         <div className='container mx-auto grid grid-cols-5 gap-5 p-2'>
@@ -49,7 +50,7 @@ const PetDetailsPage = async ({ params }) => {
                         </small>
                     </div>
                     <div>
-                        <h3 className='text-sm text-gray-500'>Adaption Fee</h3>
+                        <h3 className='text-sm text-gray-500'>Adoption Fee</h3>
                         <p className='text-3xl font-bold text-[#f69b03]'>${adaptionFee}</p>
                     </div>
                 </div>
@@ -104,7 +105,7 @@ const PetDetailsPage = async ({ params }) => {
                         <div className='flex justify-baseline items-baseline gap-1 '>
                             <span className='text-[#f69b03] text-sm'><BsCurrencyDollar /></span>
                             <div>
-                                <p className='text-sm text-gray-300'>Adaption Fee</p>
+                                <p className='text-sm text-gray-300'>Adoption Fee</p>
                                 <h3 className='text-lg font-semibold'>${adaptionFee}</h3>
                             </div>
                         </div>
@@ -140,7 +141,7 @@ const PetDetailsPage = async ({ params }) => {
             <div className='col-span-2'>
                 {
                     ownerEmail === sessionUser ?
-                    
+
                         <div className='ml-10 mr-5'>
                             <Card className="rounded-2xl border border-gray-200 shadow-sm max-w-md mx-auto">
                                 <div className="flex flex-col items-center text-center p-10 space-y-5">
@@ -168,9 +169,13 @@ const PetDetailsPage = async ({ params }) => {
                                     </div>
                                 </div>
                             </Card>
-                        </div>  :
+                        </div> :
 
-                        <PetAdaption petInfo={data}></PetAdaption>
+                        petStatus === 'Adapted' ?
+
+                            <AlreadyAdapted petName={petName}></AlreadyAdapted> :
+
+                            <PetAdaption petInfo={data}></PetAdaption>
                 }
             </div>
         </div>

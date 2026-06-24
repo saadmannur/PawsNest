@@ -7,7 +7,7 @@ import { CiCircleInfo } from 'react-icons/ci';
 import { RxCrossCircled } from 'react-icons/rx';
 import { SiTicktick } from 'react-icons/si';
 
-const PetRequestCard = ({ petRequest }) => {
+const PetRequestCard = ({ petRequest, petStatus, petStatus_id }) => {
     // console.log(petRequest);
     const router = useRouter();
 
@@ -31,6 +31,20 @@ const PetRequestCard = ({ petRequest }) => {
         if (data.modifiedCount > 0) {
             setCurrentStatus(newStatus);
             router.refresh()
+        }
+
+        if (newStatus === 'approved'){
+            const res = await fetch(`http://localhost:5000/pet/${petStatus_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    petStatus: 'Adapted',
+                })
+            });
+            const data = await res.json()
+            console.log(data)
         }
     }
 

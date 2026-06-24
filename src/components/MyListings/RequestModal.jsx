@@ -4,7 +4,7 @@ import { HiUsers } from 'react-icons/hi';
 import PetRequestCard from './PetRequestCard';
 import { ImBlocked } from 'react-icons/im';
 
-const RequestModal = ({ adaptionPetRequests, petName }) => {
+const RequestModal = ({ adaptionPetRequests, petName, petStatus, petStatus_id }) => {
     return (
         <div>
             <Modal>
@@ -37,6 +37,8 @@ const RequestModal = ({ adaptionPetRequests, petName }) => {
                                                     adaptionPetRequests?.map(petRequest => <PetRequestCard
                                                         key={petRequest._id}
                                                         petRequest={petRequest}
+                                                        petStatus={petStatus}
+                                                        petStatus_id={petStatus_id}
                                                     ></PetRequestCard>)
                                                 }
                                             </div>

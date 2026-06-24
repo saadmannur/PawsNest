@@ -16,7 +16,10 @@ const MyListingPage = async () => {
 
     const res = await fetch(`http://localhost:5000/pet/email/${user?.email}`);
     const data = await res.json()
-    // console.log(data)
+    console.log(data)
+
+    const availableStatus = data.filter(item => item.petStatus === 'Available').length;
+    const adaptedStatus = data.filter(item => item.petStatus === 'Adapted').length;
 
 
     return (
@@ -25,25 +28,25 @@ const MyListingPage = async () => {
                 <div className='text-3xl font-bold flex justify-center items-center gap-2'>
                     <h2>My Listing</h2>
                 </div>
-                <p className='text-gray-500 mt-1'>Manage your pet listing and adaption request</p>
+                <p className='text-gray-500 mt-1'>Manage your pet listing and adoption request</p>
                 <Link href={'/add-pet'}>
                     <Button variant='outline' className={'bg-[#f69b03] mt-2 text-white'}>+ Add Now</Button>
                 </Link>
             </div>
             <div className=' grid grid-cols-3 gap-3 mr-1 m-1 lg:m-0 lg:pt-5'>
                 <div className='bg-[#f5ede0] text-center border border-gray-300  rounded-2xl p-4'>
-                    <p>{data.length}</p>
-                    <h2>Total Listings</h2>
+                    <p className='text-black text-lg font-bold'>{data.length}</p>
+                    <h2 className='text-black text-lg font-bold'>Total Listings</h2>
                 </div>
 
                 <div className='bg-[#f5ede0] text-center border border-gray-300 rounded-2xl p-4'>
-                    <p>{data.length}</p>
-                    <h2>Available</h2>
+                    <p className='text-green-700 text-lg font-bold'>{availableStatus}</p>
+                    <h2 className='text-green-700 text-lg font-bold'>Available</h2>
                 </div>
 
                 <div className='bg-[#f5ede0] text-center  border border-gray-300 rounded-2xl p-4'>
-                    <p>{data.length}</p>
-                    <h2>Adapted</h2>
+                    <p className='text-[#f69b03] text-lg font-bold'>{adaptedStatus}</p>
+                    <h2 className='text-[#f69b03] text-lg font-bold'>Adopted</h2>
                 </div>
             </div>
 

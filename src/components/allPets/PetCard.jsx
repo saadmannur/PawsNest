@@ -40,7 +40,7 @@ const PetCard = ({ pet }) => {
 
                 <div className='mt-2 pb-3 border-b'>
                     <div>
-                        <p className='text-3xl font-semibold'>${adaptionFee} <span className='text-sm text-gray-300'>Adaption Fee</span></p>
+                        <p className='text-3xl font-semibold'>${adaptionFee} <span className='text-sm text-gray-300'>Adoption Fee</span></p>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@ const PetCard = ({ pet }) => {
                     </div>
                     <div>
                         <Link href={`/all-pets/${_id}`}>
-                            <Button variant='outline' className={'bg-[#f69b03] text-white border-[#f69b03]'}>Adapt Now</Button>
+                            <Button variant='outline' className={'bg-[#f69b03] text-white border-[#f69b03]'}>Adopt Now</Button>
                         </Link>
                     </div>
                 </div>

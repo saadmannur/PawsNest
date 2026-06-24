@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import React from 'react';
+import MyRequestTable from '../myRequestTable/MyRequestTable';
 
 const MyRequests = async () => {
 
@@ -11,7 +12,7 @@ const MyRequests = async () => {
     // console.log(user)
     const res = await fetch(`http://localhost:5000/adapted-pet/email/${user?.email}`);
     const data = await res.json();
-    console.log(data) 
+    // console.log(data) 
 
     const pendingCount = data.filter(item => item.status === 'pending').length;
     const approvedCount = data.filter(item => item.status === 'approved').length;
@@ -25,9 +26,9 @@ const MyRequests = async () => {
                 <div className='text-3xl font-bold flex justify-center items-center gap-2'>
                     <h2>My Adaption Request</h2>
                 </div>
-                <p className='text-gray-500 mt-1'>Track the status off all your adaption request is here.</p>
+                <p className='text-gray-500 mt-1'>Track the status off all your adoption request is here.</p>
             </div>
-            <div className=' grid grid-cols-4 gap-3 mr-1 m-1 lg:m-0 lg:pt-5'>
+            <div className=' grid grid-cols-2 lg:grid-cols-4 gap-3 mr-1 m-1 lg:m-0 lg:pt-5'>
                 <div className='bg-[#f5ede0] text-center border border-gray-300  rounded-2xl p-4'>
                     <p className='text-black text-lg font-bold'>{data.length}</p>
                     <h2 className='text-black text-lg font-bold'>Total</h2>
@@ -47,6 +48,7 @@ const MyRequests = async () => {
                     <h2 className='text-red-700 text-lg font-bold'>Rejected</h2>
                 </div>
             </div>
+            <MyRequestTable myAdoptionRequests={data}></MyRequestTable>
         </div>
     );
 };

@@ -23,7 +23,10 @@ const AddPet = () => {
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(pet)
+            body: JSON.stringify({
+                ...pet,
+                petStatus: 'Available'
+            })
         })
         const data = await res.json()
         

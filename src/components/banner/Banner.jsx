@@ -17,7 +17,7 @@ const Banner = () => {
                     <h2 className='text-7xl font-semibold'>Every Paw <br /> Deserves a <br /> <span className='text-[#02a25f]'>Loving</span> Home</h2>
                     <p className='text-gray-500'>Every adoption creates a new beginning. Discover adorable pets <br /> ready to fill your home with unconditional love, loyalty, and joy.</p>
                     <Link href={'/all-pets'}>
-                        <Button variant='outline' className={'bg-[#f69b03] text-white'}>Adapt Now</Button>
+                        <Button variant='outline' className={'bg-[#f69b03] text-white'}>Adopt Now</Button>
                     </Link>
                 </div>
                 <div className='flex justify-center items-center gap-10'>

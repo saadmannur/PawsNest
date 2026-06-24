@@ -2,7 +2,7 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import {  MdOutlineRemoveRedEye } from 'react-icons/md';
+import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import EditWithModal from './EditWithModal';
 import DeleteAlert from './DeleteAlart';
 import RequestModal from './RequestModal';
@@ -11,9 +11,9 @@ import RequestModal from './RequestModal';
 
 const PetCardListings = async ({ petInfo }) => {
 
-    const { petName, petImageUrl, adaptionFee,  species, _id } = petInfo;
+    const { petName, petImageUrl, adaptionFee, species, _id, petStatus } = petInfo;
 
-    const getAdaptionPetRequests = async () =>{
+    const getAdaptionPetRequests = async () => {
         const res = await fetch(`http://localhost:5000/adapted-pet/${_id}`);
         const data = await res.json()
         return data;
@@ -23,13 +23,16 @@ const PetCardListings = async ({ petInfo }) => {
 
     return (
         <div className=' shadow rounded-2xl flex flex-col'>
-            <Image
-                src={petImageUrl}
-                alt={petName}
-                width={300}
-                height={300}
-                className='mx-auto w-full h-[150px] rounded-t-2xl'
-            ></Image>
+            <div className='relative'>
+                <Image
+                    src={petImageUrl}
+                    alt={petName}
+                    width={300}
+                    height={300}
+                    className='mx-auto w-full h-[150px] rounded-t-2xl'
+                ></Image>
+                <p className={`absolute top-0.5 right-0.5 border px-2 rounded-full font-bold ${petStatus === 'Adapted' ? 'bg-orange-100 text-[#f69b03]' : 'border-green-600 bg-green-600  text-white'}`}>{petStatus}</p>
+            </div>
             <div className=' border-x border-b border-gray-300 p-2 rounded-b-2xl flex-1 bg-[#f5ede0]'>
                 <div className='flex justify-between items-center'>
                     <h2 className='text-2xl font-semibold'>{petName}</h2>
@@ -40,7 +43,7 @@ const PetCardListings = async ({ petInfo }) => {
                     <h3>{species}</h3>
                     <p><span>{adaptionPetRequests?.length}</span> Request</p>
                 </div>
-                
+
                 <div className='grid grid-cols-2 gap-2 lg:gap-3 py-2'>
                     <div className='col-span-1'>
                         <Link href={`/all-pets/${_id}`}>
@@ -51,13 +54,18 @@ const PetCardListings = async ({ petInfo }) => {
                         <EditWithModal petInfo={petInfo}></EditWithModal>
                     </div>
                     <div className='col-span-1'>
-                        <RequestModal adaptionPetRequests={adaptionPetRequests} petName={petName}></RequestModal>
+                        <RequestModal
+                            adaptionPetRequests={adaptionPetRequests}
+                            petName={petName}
+                            petStatus={petStatus}
+                            petStatus_id={_id}
+                        ></RequestModal>
                     </div>
                     <div className='col-span-1'>
                         <DeleteAlert petInfo={petInfo}></DeleteAlert>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>

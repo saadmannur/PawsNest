@@ -7,7 +7,7 @@ import DashboardLinks from './DashboardLinks';
 
 const LeftSideBar = () => {
     return (
-        <div className='bg-[#005a55] lg:h-screen text-white rounded-tl-4xl rounded-tr-4xl lg:rounded-tr-lg px-10 pt-5 sticky pb-2 ml-1'>
+        <div className='bg-[#005a55] lg:h-screen  text-white rounded-tl-4xl rounded-tr-4xl lg:rounded-tr-lg px-10 pt-5 sticky top-0 pb-2 ml-1'>
             <div className='flex justify-baseline items-center gap-1 lg:mb-6'>
                 <MdMenu />
                 <p>MENU</p>

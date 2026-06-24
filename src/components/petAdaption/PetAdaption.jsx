@@ -64,7 +64,7 @@ const PetAdaption = ({ petInfo }) => {
                                         Request Submitted
                                     </h2>
                                     <p className="text-sm text-gray-500 leading-relaxed">
-                                        Your adaption request for <span className="font-medium text-gray-700">{petName}</span> has been sent to the owner. You can track its status ni My Request
+                                        Your adoption request for <span className="font-medium text-gray-700">{petName}</span> has been sent to the owner. You can track its status ni My Request
                                     </p>
                                 </div>
                                 <div className="flex justify-center items-center">
@@ -82,7 +82,7 @@ const PetAdaption = ({ petInfo }) => {
                     <Card className='rounded-2xl border border-gray-300 shadow'>
                         <div className='flex justify-baseline items-center gap-1'>
                             <span className='text-[#f69b03] text-xl mt-1'><FaRegHeart /></span>
-                            <h2 className='text-2xl font-bold'>Request to Adapt {petName}</h2>
+                            <h2 className='text-2xl font-bold'>Request to Adopt {petName}</h2>
                         </div>
                         <form
                             onSubmit={handleSubmitForm}
