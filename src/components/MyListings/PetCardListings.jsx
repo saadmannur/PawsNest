@@ -6,6 +6,8 @@ import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import EditWithModal from './EditWithModal';
 import DeleteAlert from './DeleteAlart';
 import RequestModal from './RequestModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 
 
@@ -13,8 +15,16 @@ const PetCardListings = async ({ petInfo }) => {
 
     const { petName, petImageUrl, adaptionFee, species, _id, petStatus } = petInfo;
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
     const getAdaptionPetRequests = async () => {
-        const res = await fetch(`http://localhost:5000/adapted-pet/${_id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adapted-pet/${_id}`, {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        });
         const data = await res.json()
         return data;
     }

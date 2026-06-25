@@ -4,7 +4,6 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Calendar, Card, DateField, DatePicker, FieldError, Input, Label, TextArea, TextField } from '@heroui/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { CiCircleInfo } from 'react-icons/ci';
 import { FaRegHeart } from 'react-icons/fa';
 import { LuClipboardList } from 'react-icons/lu';
 import { SiTicktick } from 'react-icons/si';
@@ -30,10 +29,13 @@ const PetAdaption = ({ petInfo }) => {
         }
         // console.log(adaptedPetInfo);
 
-        const res = await fetch(`http://localhost:5000/adapted-pet`, {
+        const { data: tokenData } = await authClient.token()
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adapted-pet`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(adaptedPetInfo)
         });

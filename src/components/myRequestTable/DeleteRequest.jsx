@@ -1,6 +1,7 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 import React from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -8,14 +9,17 @@ import { toast } from 'react-toastify';
 const DeleteRequest = ({ _id }) => {
 
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:5000/adapted-pet/${_id}`, {
+
+        const { data: tokenData } = await authClient.token()
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adapted-pet/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             }
         });
         const data = await res.json();
-        console.log(data)
 
         if (data.deletedCount > 0) {
             toast.warning("Your Request deleted successfully");

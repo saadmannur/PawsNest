@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, Modal, Surface, TextField, Select, ListBox, TextArea } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -18,10 +19,13 @@ const EditWithModal = ({ petInfo }) => {
         const formData = new FormData(e.currentTarget);
         const updatedPet = Object.fromEntries(formData.entries())
 
-        const res = await fetch(`http://localhost:5000/pet/${_id}`, {
+        const { data: tokenData } = await authClient.token()
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(updatedPet)
         });

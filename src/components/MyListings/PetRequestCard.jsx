@@ -1,5 +1,6 @@
 'use client'
 
+import { authClient } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -16,10 +17,14 @@ const PetRequestCard = ({ petRequest, petStatus, petStatus_id }) => {
     const [currentStatus, setCurrentStatus] = useState(status);
 
     const handleUpdateStatus = async (newStatus) => {
-        const res = await fetch(`http://localhost:5000/adapted-pet/${_id}`, {
+
+        const { data: tokenData } = await authClient.token()
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adapted-pet/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify({
                 status: newStatus,
@@ -34,17 +39,18 @@ const PetRequestCard = ({ petRequest, petStatus, petStatus_id }) => {
         }
 
         if (newStatus === 'approved'){
-            const res = await fetch(`http://localhost:5000/pet/${petStatus_id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petStatus_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
+                    authorization: `Bearer ${tokenData?.token}`
                 },
                 body: JSON.stringify({
                     petStatus: 'Adapted',
                 })
             });
             const data = await res.json()
-            console.log(data)
+            // console.log(data)
         }
     }
 

@@ -9,8 +9,16 @@ const MyRequests = async () => {
         headers: await headers()
     })
     const user = session?.user;
-    // console.log(user)
-    const res = await fetch(`http://localhost:5000/adapted-pet/email/${user?.email}`);
+
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adapted-pet/email/${user?.email}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await res.json();
     // console.log(data) 
 
@@ -18,7 +26,7 @@ const MyRequests = async () => {
     const approvedCount = data.filter(item => item.status === 'approved').length;
     const rejectedCount = data.filter(item => item.status === 'rejected').length;
 
-    
+
 
     return (
         <div className='container mx-auto'>

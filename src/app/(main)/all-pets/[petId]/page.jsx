@@ -21,12 +21,21 @@ const PetDetailsPage = async ({ params }) => {
     })
     const sessionUser = session?.user?.email;
 
-    const res = await fetch(`http://localhost:5000/pet/${petId}`);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await res.json()
     const { petName, vaccinationStatus, species, petImageUrl, ownerEmail, location, healthStatus, gender, description, age, adaptionFee, breed, petStatus } = data;
 
     return (
-        <div className='container mx-auto grid grid-cols-5 gap-5 p-2'>
+        <div className='container mx-auto lg:grid grid-cols-5 gap-5 p-2 space-y-4 lg:space-y-0'>
             {/* details */}
             <div className='col-span-3'>
                 <div className=''>

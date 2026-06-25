@@ -3,7 +3,7 @@ import Searching from '@/components/searchingFiltering/Searching';
 import React from 'react';
 
 const getAllPets = async (search, species) => {
-    const res = await fetch(`http://localhost:5000/pet?search=${search}&species=${species}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet?search=${search}&species=${species}`, {
         cache: 'no-store',
     });
     const data = await res.json()

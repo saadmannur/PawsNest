@@ -14,9 +14,17 @@ const MyListingPage = async () => {
     })
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/pet/email/${user?.email}`);
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/email/${user?.email}`, {
+        headers:{
+            authorization : `Bearer ${token}`
+        }
+    });
     const data = await res.json()
-    console.log(data)
+    // console.log(data)
 
     const availableStatus = data.filter(item => item.petStatus === 'Available').length;
     const adaptedStatus = data.filter(item => item.petStatus === 'Adapted').length;
