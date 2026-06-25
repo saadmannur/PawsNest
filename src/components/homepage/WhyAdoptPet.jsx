@@ -32,7 +32,7 @@ const WhyAdoptPet = () => {
 
     return (
         <div>
-            <section className="bg-[#f5ede0] py-20 rounded-t-4xl">
+            <section className="bg-[#f5ede0] py-20 rounded-4xl">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto mb-14">
                         <h2 className="text-4xl font-bold text-[#005a55] mb-4">
