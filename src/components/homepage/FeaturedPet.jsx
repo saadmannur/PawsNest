@@ -8,7 +8,7 @@ import arrow from '@/assets/Arrow.png';
 
 const FeaturedPet = async () => {
 
-    const res = await fetch("http://localhost:5000/featured-pet")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured-pet`)
     const featuredPets = await res.json()
 
     // console.log(featuredPets);

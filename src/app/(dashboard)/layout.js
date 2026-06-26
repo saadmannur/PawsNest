@@ -2,6 +2,11 @@ import LeftSideBar from '@/components/dashboard/LeftSideBar';
 import Navbar from '@/components/nav/Navbar';
 import React from 'react';
 
+export const metadata = {
+    title: "Dashboard",
+    description: "This a pet adoption platform",
+};
+
 const DashboardLayout = ({ children }) => {
 
     return (
